@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Gift Card Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;600;700&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Serif+Bengali:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <main class="app-shell">
+        <section class="preview-panel" aria-labelledby="previewTitle">
+            <div class="preview-topbar">
+                <div class="panel-heading compact">
+                    <p class="eyebrow">Studio</p>
+                    <h1 id="previewTitle">Preview</h1>
+                </div>
+
+                <div class="preview-actions">
+                    <div class="lock-toggle-wrap" aria-label="Lock card for text positioning">
+                        <input id="inpLock" type="checkbox">
+                        <label class="btn-lock" for="inpLock" title="Lock card to move text">
+                            <svg width="36" height="40" viewBox="0 0 36 40" aria-hidden="true">
+                                <path class="lockb"
+                                    d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z">
+                                </path>
+                                <path class="lock"
+                                    d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path>
+                                <path class="bling" d="M29 20L31 22"></path>
+                                <path class="bling" d="M31.5 15H34.5"></path>
+                                <path class="bling" d="M29 10L31 8"></path>
+                            </svg>
+                        </label>
+                        <span class="lock-label">Move Text</span>
+                    </div>
+
+                    <strong class="active-pill" id="activeTemplateLabel">Card 1</strong>
+                </div>
+            </div>
+
+            <div class="preview-frame">
+                <div class="gift-flip-card">
+                    <div class="gift-flip-inner">
+                        <div class="gift-flip-front">
+                            <canvas id="cardCanvas" width="1500" height="2400" aria-label="Gift card preview"></canvas>
+                        </div>
+                        <div class="gift-flip-back">
+                            <div class="gift-back-content">
+                                <p class="gift-back-eyebrow">Eid Wishes</p>
+                                <h3>ঈদের আলোয় ভরে উঠুক হৃদয়</h3>
+                                <p>ভালোবাসা, দোয়া আর শান্তির ছোঁয়ায় আপনার প্রতিটি দিন হয়ে উঠুক আরও সুন্দর।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="template-browser">
+                <div class="template-browser-head">
+                    <div>
+                        <div class="template-title-row">
+                            <p class="eyebrow">Templates</p>
+                            <span class="count-badge" id="availableCardCount">0 cards</span>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls" aria-label="Template navigation">
+                        <button class="nav-button" id="prevBtn" type="button" aria-label="Previous template">‹</button>
+                        <button class="nav-button" id="nextBtn" type="button" aria-label="Next template">›</button>
+                    </div>
+                </div>
+
+                <div class="template-wheel" id="templateGrid" aria-label="Template wheel"></div>
+            </div>
+        </section>
+
+        <section class="controls-panel" aria-labelledby="controlsTitle">
+            <div class="panel-heading">
+                <p class="eyebrow">Editor</p>
+                <h2 id="controlsTitle">Edit Card</h2>
+            </div>
+
+            <div class="controls-grid">
+                <div class="field-group">
+                    <label for="recipientInput">নাম</label>
+                    <input id="recipientInput" type="text" maxlength="40" placeholder="যার জন্য কার্ড">
+                </div>
+
+                <div class="field-group">
+                    <label for="messageInput">শুভেচ্ছাবার্তা</label>
+                    <textarea id="messageInput" rows="3" maxlength="180"
+                        placeholder="এখানে আপনার বার্তা লিখুন"></textarea>
+                </div>
+
+                <div class="compact-row">
+                    <div class="field-group">
+                        <label for="fontSelect">ফন্ট</label>
+                        <select id="fontSelect">
+                            <optgroup label="Bangla">
+                                <option value="bangla-ui">Bangla UI</option>
+                                <option value="hind-siliguri">Hind Siliguri</option>
+                                <option value="noto-bengali-serif">Noto Serif Bengali</option>
+                                <option value="baloo-bangla">Baloo Da 2</option>
+                            </optgroup>
+                            <optgroup label="English">
+                                <option value="inter">Inter</option>
+                                <option value="poppins">Poppins</option>
+                                <option value="trebuchet">Trebuchet</option>
+                                <option value="georgia">Georgia</option>
+                                <option value="merriweather">Merriweather</option>
+                                <option value="palatino">Palatino</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="field-group color-group">
+                        <label for="colorInput">রঙ</label>
+                        <input id="colorInput" type="color" value="#1f6fff">
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label>স্টাইল</label>
+                    <div class="style-toggle-row">
+                        <button class="style-toggle" id="boldToggle" type="button" aria-pressed="false">Bold</button>
+                        <button class="style-toggle" id="italicToggle" type="button"
+                            aria-pressed="false">Italic</button>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <div class="range-header">
+                        <label for="fontSizeInput">লেখার আকার</label>
+                        <span id="fontSizeValue">100%</span>
+                    </div>
+                    <input id="fontSizeInput" type="range" min="75" max="135" step="1" value="100">
+                </div>
+            </div>
+
+            <div class="action-row">
+                <button class="action-button primary" id="downloadBtn" type="button">Download PNG</button>
+                <button class="action-button secondary" id="shareBtn" type="button">Share</button>
+                <button class="action-button subtle" id="resetBtn" type="button">Reset</button>
+            </div>
+
+            <p class="status-message" id="statusMessage" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <script src="assets/js/template-data.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
